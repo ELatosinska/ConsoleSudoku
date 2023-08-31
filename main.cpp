@@ -9,7 +9,6 @@ bool isValidSudokuNumber(char number);
 
 int main() {
     auto sudokuBoard = getBoard();
-    std::cout << SudokuBoard::isValidBoard(sudokuBoard->board);
     play(sudokuBoard);
     return 1;
 }
@@ -17,7 +16,6 @@ int main() {
 void play(SudokuBoard *sudoku) {
     char newBoard[9][9] = {};
     char row = 0, column = 0, number = 0;
-    std::cout <<( sudoku->isFinished() ? "true" : "false");
     while (!sudoku->isFinished()) {
         sudoku->printBoard();
         std::cout << "in which row want you add number?" << std::endl;
@@ -43,6 +41,8 @@ void play(SudokuBoard *sudoku) {
             std::cout << "Illegal move!";
         }
     }
+    sudoku->printBoard();
+
     std::cout << "Congratulations! You've finished the puzzle!";
 }
 
@@ -75,5 +75,5 @@ SudokuBoard *getBoard() {
                          {'7', '2', '4', '5', '3', '1', '8', '6', '9'},
                          {'5', '3', '8', '6', '2', '9', '1', '4', '7'},
                          {'6', '1', '9', '4', '7', '8', '5', '2', '3'}};
-    return new SudokuBoard(almostDoneSudoku);
+    return new SudokuBoard(sudoku);
 }
